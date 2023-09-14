@@ -83,3 +83,9 @@ CREATE TABLE new_sales AS
 	UNION ALL
 	SELECT date_time, day_of_week, total, place, 'merinque_cookies' AS product, merinque_cookies AS orders
 	FROM sales;
+
+-- Understand the percentage of orders for each subcatetory
+SELECT product, SUM(orders) AS total_sold, SUM(orders)/10840 * 100 AS perct_sold
+FROM new_sales
+GROUP BY product
+ORDER BY total_sold DESC;
